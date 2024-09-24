@@ -1,6 +1,4 @@
-
 const fs = require('fs');
-
 const PRIME = 2n ** 256n - 2n ** 32n - 977n;
 
 function decodeValue(base, value) {
@@ -63,11 +61,15 @@ function processTestCase(testCase) {
     return lagrangeInterpolation(Object.fromEntries(Object.entries(points).slice(0, k)), k);
 }
 
-const testCase = JSON.parse(fs.readFileSync('test_case.json', 'utf8'));
+
+const testCase = JSON.parse(fs.readFileSync('test1.json', 'utf8'));
+const testCase2 = JSON.parse(fs.readFileSync('test2.json', 'utf8'));
 
 try {
     const secret = processTestCase(testCase);
     console.log(secret);
+    const secret2 = processTestCase(testCase2);
+    console.log(secret2);
 } catch (e) {
     console.error(`Error: ${e.message}`);
 }
